@@ -3,10 +3,11 @@ package com.anakiou.mt.config;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 @Configuration
 public class DataSourceConfig {
@@ -14,6 +15,7 @@ public class DataSourceConfig {
 	@Autowired
 	private MultitenancyProperties multitenancyProperties;
 
+	@Primary
 	@Bean(name = { "dataSource", "dataSource1" })
 	@ConfigurationProperties(prefix = "spring.multitenancy.datasource1")
 	public DataSource dataSource1() {

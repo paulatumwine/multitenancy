@@ -2,6 +2,7 @@ package com.anakiou.mt.util;
 
 import org.hibernate.engine.jdbc.connections.spi.AbstractDataSourceBasedMultiTenantConnectionProviderImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -15,12 +16,15 @@ public class DataSourceBasedMultiTenantConnectionProviderImpl extends AbstractDa
 	private static final long serialVersionUID = 8168907057647334460L;
 	private static final String DEFAULT_TENANT_ID = "tenant_1";
 
+	@Qualifier("dataSource1")
 	@Autowired
 	private DataSource dataSource1;
 
+	@Qualifier("dataSource2")
 	@Autowired
 	private DataSource dataSource2;
 
+	@Qualifier("dataSource3")
 	@Autowired
 	private DataSource dataSource3;
 
